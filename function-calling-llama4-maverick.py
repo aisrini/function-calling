@@ -73,6 +73,7 @@ if result["choices"][0]["message"].get("tool_calls"):
     print(f"[Model] Tool call requested: {function_name} with arguments {arguments}")
     
     messages.append(result["choices"][0]["message"])
+    messages[-1]["content"] = "" # this is because Meta's template always expect content to be not none for tool calls
 
     # Execute the requested function if it matches one we have
     if function_name == "get_weather":
